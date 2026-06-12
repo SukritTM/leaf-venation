@@ -6,8 +6,6 @@ import numpy as np
 from plot_utils import plot_contour, plot_edges
 import matplotlib.pyplot as plt
 
-from tqdm import tqdm
-
 
 gen  = default_rng(38572736218376)
 
