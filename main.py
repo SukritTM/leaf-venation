@@ -147,13 +147,13 @@ def main():
     leaf_contour = SuperellipseLeafBlade(a = 2, b = 5, r = 0.8)
     root_node = Node(position=leaf_contour.petiole, parent=None, children=None)
 
-    B_DIST_S = 10
-    B_DIST_V = 3
-    K_DIST = 2
-    NUM_NEW_SRC_PER_AREA = 1
-    GROWTH_DELTA = 0.09
+    B_DIST_S = 10            # Min. distance from auxin source at which new auxin sources can be born
+    B_DIST_V = 3             # Min. distance from vein node at which new auxin sources can be born
+    K_DIST = 2               # Max. distance between auxin and vein node at which the auxin source should be killed 
+    NUM_NEW_SRC_PER_AREA = 1 # Number of new auxin sources allowed expressed as a fraction of the leaf blade area
+    GROWTH_DELTA = 0.09      # The amount by which the leaf's scale should increase each iteration
 
-    NUM_ITER = 55
+    NUM_ITER = 55 # Self-explanatory
 
     nodes = [root_node]
 
