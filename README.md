@@ -16,7 +16,7 @@ Activate you virtual environment by running the appropriate script for your plat
 
 Make sure you are in the root of the repository. Install the dependencies with `python -m pip install -r requirements.txt`
 
-Run `python main.py` to see a leaf venation pattern
+Run `python main.py` to see a leaf venation pattern. You can also edit some of the variables in `main.py` to change the parameters and see how that affects the vein pattern.
 
 # Reference
 
