@@ -3,11 +3,11 @@ from numpy.random import default_rng
 
 import numpy as np
 
-from plot_utils import plot_contour, plot_edges
+from plot_utils import plot_contour, plot_edges, calculate_thicknesses
 import matplotlib.pyplot as plt
 
 
-gen  = default_rng(38572736218376)
+gen  = default_rng(38572736218376+3)
 
 def sample_uniform(xsmall, xlarge, ysmall, ylarge):
     global gen
@@ -144,21 +144,21 @@ def place_new_nodes(nodes, auxin_sources):
 
 def main():
     auxin_sources: list[Point] = list()
-    leaf_contour = SuperellipseLeafBlade(a = 2.5, b = 5, r = 0.8)
+    leaf_contour = SuperellipseLeafBlade(a = 2, b = 5, r = 0.8)
     root_node = Node(position=leaf_contour.petiole, parent=None, children=None)
 
-    B_DIST_S = 14
+    B_DIST_S = 10
     B_DIST_V = 3
     K_DIST = 2
     NUM_NEW_SRC_PER_AREA = 1
-    GROWTH_DELTA = 0.1
+    GROWTH_DELTA = 0.09
 
-    NUM_ITER = 50
+    NUM_ITER = 55
 
     nodes = [root_node]
 
     for _ in range(NUM_ITER):
-        new_auxin_sources = generate_auxin(
+        new_auxin_sources = generate_auxin_marginonly(
             auxin_sources = auxin_sources, 
             source_birth_distance = B_DIST_S,
             nodes = nodes,
@@ -177,7 +177,7 @@ def main():
 
     plt.axis('equal')
     plot_contour(leaf_contour)
-    plot_edges(root_node)
+    plot_edges(root_node, nodes=nodes)
     plt.show()
 
 
